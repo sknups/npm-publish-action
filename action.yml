@@ -16,19 +16,19 @@ runs:
 
     - name: Check preconditions
       shell: bash
-      run: ${{github.action_path}}/scripts/check-preconditions.sh
+      run: $GITHUB_ACTION_PATH/scripts/check-preconditions.sh
 
     - name: Set SNAPSHOT version
       if: startsWith(github.ref, 'refs/heads')
       shell: bash
-      run: ${{github.action_path}}/scripts/set-snapshot-version.sh
+      run: $GITHUB_ACTION_PATH/scripts/set-snapshot-version.sh
 
     - name: Set RELEASE version
       if: startsWith(github.ref, 'refs/tags')
       shell: bash
-      run: ${{github.action_path}}/scripts/set-release-version.sh
+      run: $GITHUB_ACTION_PATH/scripts/set-release-version.sh
 
     - name: Publish npm package
       id: 'publish'
       shell: bash
-      run: ${{github.action_path}}/scripts/publish.sh
+      run: $GITHUB_ACTION_PATH/scripts/publish.sh
